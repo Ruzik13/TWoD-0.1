@@ -11,9 +11,10 @@ public class Human : MonoBehaviour {
 	bool isHurting, isDead;
 	bool facingRight = true;
 	Vector3 localScale;
+    private float horizontalInput;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		localScale = transform.localScale;
@@ -23,7 +24,7 @@ public class Human : MonoBehaviour {
 	void Update()
 	{
 
-		if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
+        if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
 			rb.AddForce(Vector2.up * 600f);
 
 		if (Input.GetKey(KeyCode.LeftShift))
