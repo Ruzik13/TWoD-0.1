@@ -87,7 +87,7 @@ public class Human : MonoBehaviour {
 		else
 			anim.SetBool ("isRunning", false);
 
-		if (rb.velocity.y > 0)
+		if (rb.velocity.y > 0 && Input.GetKey(KeyCode.Space))
 			anim.SetBool ("isJumping", true);
 		
 		if (rb.velocity.y < 0) {
