@@ -6,36 +6,40 @@ public class Human : MonoBehaviour {
 
 	Rigidbody2D rb;
 	Animator anim;
-	float dirX, moveSpeed = 5f;
-	int  healthPoints = 3;
-	bool isHurting, isDead;
-	bool facingRight = true;
+	float dirX, Speed;
+    public float moveSpeedwalk = 3f;
+    public float moveSpeedrun = 8f;
+	HumanHealth healthComponent;
+    RatHealth enemyhealthComponent;
+    MonsterHealth enemyhealth2Component;
+    bool isHurting, isDead;
+    bool facingRight = true;
 	Vector3 localScale;
-    private float horizontalInput;
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		localScale = transform.localScale;
+        healthComponent = GetComponent<HumanHealth> ();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 
-        if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
+		if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
 			rb.AddForce(Vector2.up * 600f);
 
 		if (Input.GetKey(KeyCode.LeftShift))
-			moveSpeed = 8f;
+            Speed = moveSpeedrun;
 		else
-			moveSpeed = 3f;
+            Speed = moveSpeedwalk;
 
 		SetAnimationState();
 
 		if (!isDead)
-			dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+			dirX = Input.GetAxisRaw("Horizontal") * Speed;
 
 
         if (Input.GetKey(KeyCode.S))
@@ -44,7 +48,15 @@ public class Human : MonoBehaviour {
             anim.SetBool("isAttacking", false);
     }
 
-	void FixedUpdate()
+    void PlayerAttack()
+    {
+        if (Input.GetKey(KeyCode.S))
+            anim.SetBool("isAttacking", true);
+        else
+            anim.SetBool("isAttacking", false);
+    }
+
+    void FixedUpdate()
 	{
 		if (!isHurting)
 			rb.velocity = new Vector2 (dirX, rb.velocity.y);
@@ -82,7 +94,7 @@ public class Human : MonoBehaviour {
 			anim.SetBool ("isJumping", false);
 			anim.SetBool ("isFalling", true);
 		}
-	}
+    }
 
 	void CheckWhereToFace()
 	{
@@ -100,19 +112,69 @@ public class Human : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.gameObject.name.Equals ("Suriken_0")) {
-			healthPoints -= 1;
-		}
+		if (col.gameObject.name.Equals("rat") && !isDead) {
+            if (healthComponent.GetHealthPoints() <= 0)
+            {
+                dirX = 0;
+                isDead = true;
+                anim.SetTrigger("isDead"); // Memainkan animasi kematian
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                col.GetComponent<RatHealth>().DecreaseHealth();
+                anim.SetBool("isAttacking", true);
+            }
+            else if (col.gameObject.GetComponent<RatHealth>().GetHealthPoints() <= 0)
+			{
+			}
+            else 
+            {
+                healthComponent.DecreaseHealth();
+                anim.SetBool("isAttacking", false);
+                anim.SetTrigger("isHurting"); // Memainkan animasi terluka
+                StartCoroutine(Hurt());
+            }             
+        }
+        if (col.gameObject.name.Equals("Bringer-of-Death") && !isDead)
+        {
+            if (healthComponent.GetHealthPoints() <= 0)
+            {
+                dirX = 0;
+                isDead = true;
+                anim.SetTrigger("isDead"); // Memainkan animasi kematian
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                col.GetComponent<MonsterHealth>().DecreaseHealth();
+                anim.SetBool("isAttacking", true);
+            }
+            else if (col.gameObject.GetComponent<MonsterHealth>().GetHealthPoints() <= 0)
+            {
+            }
+            else
+            {
+                healthComponent.DecreaseHealth();
+                anim.SetBool("isAttacking", false);
+                anim.SetTrigger("isHurting"); // Memainkan animasi terluka
+                StartCoroutine(Hurt());
+            }
+        }
+        if (col.gameObject.name.Equals("Suriken") && !isDead)
+		{
+			if (healthComponent.GetHealthPoints() <= 0)
+			{
+				dirX = 0;
+				isDead = true;
+				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+			}
+			else { 
+			healthComponent.DecreaseHealth();
+			anim.SetTrigger("isHurting"); // Memainkan animasi terluka
+			StartCoroutine(Hurt());
+			}
+        }
 
-		if (col.gameObject.name.Equals ("Suriken_0") && healthPoints > 0) {
-			anim.SetTrigger ("isHurting");
-			StartCoroutine ("Hurt");
-		} else {
-			dirX = 0;
-			isDead = true;
-			anim.SetTrigger ("isDead");
-		}
-	}
+    }
 
 	IEnumerator Hurt()
 	{
