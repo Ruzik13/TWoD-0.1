@@ -46,6 +46,9 @@ public class Human : MonoBehaviour {
             anim.SetBool("isAttacking", true);
         else
             anim.SetBool("isAttacking", false);
+
+		if (Input.GetKey(KeyCode.E))
+			healthComponent.DecreaseHealth();
     }
 
     void PlayerAttack()
@@ -87,7 +90,7 @@ public class Human : MonoBehaviour {
 		else
 			anim.SetBool ("isRunning", false);
 
-		if (rb.velocity.y > 0)
+		if (rb.velocity.y > 0 && Input.GetKey(KeyCode.Space))
 			anim.SetBool ("isJumping", true);
 		
 		if (rb.velocity.y < 0) {
