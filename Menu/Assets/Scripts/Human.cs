@@ -47,9 +47,14 @@ public class Human : MonoBehaviour {
         else
             anim.SetBool("isAttacking", false);
 
-		if (Input.GetKey(KeyCode.E))
-			healthComponent.DecreaseHealth();
-    }
+		if (healthComponent.GetHealthPoints() <= 0)
+		{
+			dirX = 0;
+			isDead = true;
+			anim.SetTrigger("isDead"); // Memainkan animasi kematian
+		}
+
+	}
 
     void PlayerAttack()
     {
@@ -82,10 +87,10 @@ public class Human : MonoBehaviour {
 			anim.SetBool ("isFalling", false);
 		}
 
-		if (Mathf.Abs(dirX) == 3 && rb.velocity.y == 0)
+		if (Mathf.Abs(dirX) == moveSpeedwalk && rb.velocity.y == 0)
 			anim.SetBool ("isWalking", true);
 		
-		if (Mathf.Abs(dirX) == 8 && rb.velocity.y == 0)
+		if (Mathf.Abs(dirX) == moveSpeedrun && rb.velocity.y == 0)
 			anim.SetBool ("isRunning", true);
 		else
 			anim.SetBool ("isRunning", false);

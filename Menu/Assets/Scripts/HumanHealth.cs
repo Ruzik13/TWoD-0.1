@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class HumanHealth : MonoBehaviour
 {
-    [SerializeField] private int healthPoints;
+    public int healthPoints = 3;
 
-    public void DecreaseHealth()
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.E))
+			DecreaseHealth();
+
+	}
+	public void DecreaseHealth()
     {
         healthPoints--;
     }

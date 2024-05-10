@@ -9,6 +9,7 @@ public class Healthbar : MonoBehaviour
 
 	private void Start()
 	{
+		healthComponent = GetComponent<HumanHealth>();
 		totalhealthBar.fillAmount = healthComponent.GetHealthPoints() / 10;
 	}
 	private void Update()
