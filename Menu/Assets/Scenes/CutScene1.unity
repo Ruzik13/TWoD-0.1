@@ -3075,7 +3075,6 @@ GameObject:
   - component: {fileID: 484535711}
   - component: {fileID: 484535710}
   - component: {fileID: 484535712}
-  - component: {fileID: 484535713}
   m_Layer: 0
   m_Name: citata2_2
   m_TagString: Untagged
@@ -3171,18 +3170,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &484535713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484535709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a23a6933e105c341a9e11d8e416ea2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &486700980
 GameObject:
   m_ObjectHideFlags: 0
@@ -9780,6 +9767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479677805}
   - component: {fileID: 1479677804}
+  - component: {fileID: 1479677806}
   m_Layer: 0
   m_Name: TimelineManager
   m_TagString: Untagged
@@ -9798,7 +9786,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 180b95b7738f6db489b7baaee3427392, type: 2}
   m_InitialState: 1
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -9903,6 +9891,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479677806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479677803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a23a6933e105c341a9e11d8e416ea2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495946616
 GameObject:
   m_ObjectHideFlags: 0
