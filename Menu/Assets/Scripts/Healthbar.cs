@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Healthbar : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class Healthbar : MonoBehaviour
 
 	private void Start()
 	{
-		healthComponent = GetComponent<HumanHealth>();
-		totalhealthBar.fillAmount = healthComponent.GetHealthPoints() / 10;
+		if (!healthComponent)
+		{
+			healthComponent = gameObject.AddComponent<HumanHealth>();
+		}
+		totalhealthBar.fillAmount = healthComponent.currentHealth / 10;
 	}
 	private void Update()
 	{
-		currenthealthBar.fillAmount = healthComponent.GetHealthPoints() / 10;
+		currenthealthBar.fillAmount = healthComponent.currentHealth / 10;
 	}
 }

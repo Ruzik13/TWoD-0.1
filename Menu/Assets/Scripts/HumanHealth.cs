@@ -5,22 +5,17 @@ using UnityEngine;
 
 public class HumanHealth : MonoBehaviour
 {
-    public int healthPoints = 3;
-
-	private void Update()
+    [SerializeField] private float startingHealth;
+	public float currentHealth;
+	private void Awake()
 	{
-		if (Input.GetKeyDown(KeyCode.E))
-			DecreaseHealth();
-
+		currentHealth = startingHealth;
 	}
+
 	public void DecreaseHealth()
-    {
-        healthPoints--;
-    }
+	{
+		currentHealth -= 1;
+	}
 
-    public int GetHealthPoints()
-    {
-        return healthPoints;
-    }
-
+	
 }

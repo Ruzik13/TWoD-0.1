@@ -4,10 +4,13 @@ using System.Collections;
 public class RatHealth : MonoBehaviour
 {
     [SerializeField] private int healthPoints;
+    Animator anim;
 
     public void DecreaseHealth()
     {
+        anim = GetComponent<Animator>();
         healthPoints--;
+        anim.SetTrigger("isHurting");
     }
 
     public int GetHealthPoints()

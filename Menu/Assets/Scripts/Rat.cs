@@ -85,7 +85,7 @@ public class Rat : MonoBehaviour
         enemyPatrol.Awake();
 
         HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();
-        if (humanHealth != null && humanHealth.GetHealthPoints() <= 0)
+        if (humanHealth != null && humanHealth.currentHealth <= 0)
         {
             anim.SetBool("isRunning", false);
             enemyPatrol.notmove();

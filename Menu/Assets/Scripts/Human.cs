@@ -47,12 +47,15 @@ public class Human : MonoBehaviour {
         else
             anim.SetBool("isAttacking", false);
 
-		if (healthComponent.GetHealthPoints() <= 0)
+		if (healthComponent.currentHealth <= 0)
 		{
 			dirX = 0;
 			isDead = true;
 			anim.SetTrigger("isDead"); // Memainkan animasi kematian
 		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+			healthComponent.DecreaseHealth();
 
 	}
 
@@ -121,7 +124,7 @@ public class Human : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.gameObject.name.Equals("rat") && !isDead) {
-            if (healthComponent.GetHealthPoints() <= 0)
+            if (healthComponent.currentHealth <= 0)
             {
                 dirX = 0;
                 isDead = true;
@@ -145,7 +148,7 @@ public class Human : MonoBehaviour {
         }
         if (col.gameObject.name.Equals("Bringer-of-Death") && !isDead)
         {
-            if (healthComponent.GetHealthPoints() <= 0)
+            if (healthComponent.currentHealth <= 0)
             {
                 dirX = 0;
                 isDead = true;
@@ -169,7 +172,7 @@ public class Human : MonoBehaviour {
         }
         if (col.gameObject.name.Equals("Suriken") && !isDead)
 		{
-			if (healthComponent.GetHealthPoints() <= 0)
+			if (healthComponent.currentHealth <= 0)
 			{
 				dirX = 0;
 				isDead = true;
@@ -190,11 +193,11 @@ public class Human : MonoBehaviour {
 		rb.velocity = Vector2.zero;
 
 		if (facingRight)
-			rb.AddForce (new Vector2(-200f, 200f));
+			rb.AddForce(new Vector2(-200f, 200f));
 		else
-			rb.AddForce (new Vector2(200f, 200f));
-		
-		yield return new WaitForSeconds (0.5f);
+			rb.AddForce(new Vector2(200f, 200f));
+
+		yield return new WaitForSeconds(0.5f);
 
 		isHurting = false;
 	}
