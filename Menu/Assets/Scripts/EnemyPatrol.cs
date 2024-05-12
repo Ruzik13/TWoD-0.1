@@ -40,6 +40,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             speed = defaultspeed;
         }
+        
     }
 
     private void OnDisable()

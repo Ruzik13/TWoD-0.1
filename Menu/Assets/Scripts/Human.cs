@@ -12,7 +12,9 @@ public class Human : MonoBehaviour {
 	HumanHealth healthComponent;
     RatHealth enemyhealthComponent;
     MonsterHealth enemyhealth2Component;
-    bool isHurting, isDead;
+	private float idleTimer = 0;
+	private float idleDuration = 100;
+	bool isHurting, isDead;
     bool facingRight = true;
 	Vector3 localScale;
 
@@ -42,10 +44,12 @@ public class Human : MonoBehaviour {
 			dirX = Input.GetAxisRaw("Horizontal") * Speed;
 
 
-        if (Input.GetKey(KeyCode.S))
-            anim.SetBool("isAttacking", true);
-        else
-            anim.SetBool("isAttacking", false);
+        if (Input.GetKeyDown(KeyCode.S))
+		{
+			anim.SetBool("isAttacking", true);
+			StartCoroutine(EndAttack());
+
+		}
 
 		if (healthComponent.currentHealth <= 0)
 		{
@@ -53,19 +57,26 @@ public class Human : MonoBehaviour {
 			isDead = true;
 			anim.SetTrigger("isDead"); // Memainkan animasi kematian
 		}
-
-		if (Input.GetKeyDown(KeyCode.E))
-			healthComponent.DecreaseHealth(1);
+		
 
 	}
 
-    void PlayerAttack()
+	IEnumerator EndAttack()
+	{
+		yield return new WaitForSeconds(0.5f); // Задержка, соответствующая длительности анимации
+		anim.SetBool("isAttacking", false);
+	}
+
+	void PlayerAttack()
     {
-        if (Input.GetKey(KeyCode.S))
-            anim.SetBool("isAttacking", true);
-        else
-            anim.SetBool("isAttacking", false);
-    }
+		if (Input.GetKey(KeyCode.S))
+			anim.SetBool("isAttacking", true);
+			
+		else
+			anim.SetBool("isAttacking", false);
+		
+
+	}
 
     void FixedUpdate()
 	{
