@@ -7,7 +7,7 @@ public class Human : MonoBehaviour {
 	Rigidbody2D rb;
 	Animator anim;
 	float dirX, Speed;
-    public float moveSpeedwalk = 3f;
+    public float moveSpeedwalk = 4f;
     public float moveSpeedrun = 8f;
 	HumanHealth healthComponent;
     RatHealth enemyhealthComponent;
