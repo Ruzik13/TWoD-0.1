@@ -20,7 +20,8 @@ public class Rat : MonoBehaviour
         if (enemyPatrol != null)
             enemyPatrol.enabled = !isDead;
 
-    }
+
+	}
 
    
 

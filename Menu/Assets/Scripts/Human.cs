@@ -55,7 +55,7 @@ public class Human : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.E))
-			healthComponent.DecreaseHealth();
+			healthComponent.DecreaseHealth(1);
 
 	}
 
@@ -140,7 +140,7 @@ public class Human : MonoBehaviour {
 			}
             else 
             {
-                healthComponent.DecreaseHealth();
+                healthComponent.DecreaseHealth(1);
                 anim.SetBool("isAttacking", false);
                 anim.SetTrigger("isHurting"); // Memainkan animasi terluka
                 StartCoroutine(Hurt());
@@ -164,7 +164,7 @@ public class Human : MonoBehaviour {
             }
             else
             {
-                healthComponent.DecreaseHealth();
+                healthComponent.DecreaseHealth(1);
                 anim.SetBool("isAttacking", false);
                 anim.SetTrigger("isHurting"); // Memainkan animasi terluka
                 StartCoroutine(Hurt());
@@ -179,7 +179,7 @@ public class Human : MonoBehaviour {
 				anim.SetTrigger("isDead"); // Memainkan animasi kematian
 			}
 			else { 
-			healthComponent.DecreaseHealth();
+			healthComponent.DecreaseHealth(1);
 			anim.SetTrigger("isHurting"); // Memainkan animasi terluka
 			StartCoroutine(Hurt());
 			}

@@ -12,9 +12,14 @@ public class HumanHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 
-	public void DecreaseHealth()
+	public void DecreaseHealth(float _damage)
 	{
-		currentHealth -= 1;
+		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+	}
+
+	public void AddHealth(float _value)
+	{
+		currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
 	}
 
 	
