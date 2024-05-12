@@ -20,7 +20,8 @@ public class Rat : MonoBehaviour
         if (enemyPatrol != null)
             enemyPatrol.enabled = !isDead;
 
-    }
+
+	}
 
    
 
@@ -32,6 +33,7 @@ public class Rat : MonoBehaviour
         localScale = transform.localScale;
         enemyPatrol = GetComponentInParent<EnemyPatrol>();  
         healthComponent = GetComponent<RatHealth>();
+        isDead = false;
     }
     void CheckWhereToFace()
     {
@@ -54,7 +56,7 @@ public class Rat : MonoBehaviour
        
         if (col.gameObject.name.Equals("Human") && !isDead)
         {
-            if (healthComponent.GetHealthPoints() <= 0)
+            if (healthComponent.GetHealthPoints() < 1)
             {
                 dirX = 0;
                 isDead = true;
@@ -85,7 +87,7 @@ public class Rat : MonoBehaviour
         enemyPatrol.Awake();
 
         HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();
-        if (humanHealth != null && humanHealth.GetHealthPoints() <= 0)
+        if (humanHealth != null && humanHealth.currentHealth <= 0)
         {
             anim.SetBool("isRunning", false);
             enemyPatrol.notmove();

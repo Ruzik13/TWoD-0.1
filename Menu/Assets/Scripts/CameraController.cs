@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
         // Room camera
         // transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z), ref velocity, speed);
 
-        transform.position = new Vector3(Human.position.x + lookAhead, transform.position.y, transform.position.z);
+        transform.position = new Vector3(Human.position.x + lookAhead, Human.position.y + 4, transform.position.z);
         lookAhead = Mathf.Lerp(lookAhead, (aheadDistance * Human.localScale.x), Time.deltaTime * cameraSpeed);
     }
 
