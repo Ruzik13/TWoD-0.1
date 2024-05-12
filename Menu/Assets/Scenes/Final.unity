@@ -30997,6 +30997,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 0, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 51
+      m_TileSpriteIndex: 43
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -39351,7 +39361,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: c5b241399abff484f81db8fc465638b4, type: 2}
   - m_RefCount: 13
     m_Data: {fileID: 11400000, guid: 59669d86876964c49a1d3ad5d11de582, type: 2}
-  - m_RefCount: 13
+  - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: a358b8126b4e82e4b8b060587101ad83, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: 715ab2fc64cdd4644be0384a9a1a3afe, type: 2}
@@ -39788,7 +39798,7 @@ Tilemap:
     m_Data: {fileID: 1904454042, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - m_RefCount: 13
     m_Data: {fileID: -1849235611, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
-  - m_RefCount: 13
+  - m_RefCount: 14
     m_Data: {fileID: -1653152055, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 1198456281, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
@@ -40155,7 +40165,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1235824149, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1923
+  - m_RefCount: 1924
     m_Data:
       e00: 1
       e01: 0
@@ -40174,7 +40184,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1923
+  - m_RefCount: 1924
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -41098,7 +41108,7 @@ SpriteRenderer:
   m_Size: {x: 0.175, y: 0.3625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &816698522
