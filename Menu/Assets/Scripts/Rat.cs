@@ -32,6 +32,7 @@ public class Rat : MonoBehaviour
         localScale = transform.localScale;
         enemyPatrol = GetComponentInParent<EnemyPatrol>();  
         healthComponent = GetComponent<RatHealth>();
+        isDead = false;
     }
     void CheckWhereToFace()
     {
@@ -54,7 +55,7 @@ public class Rat : MonoBehaviour
        
         if (col.gameObject.name.Equals("Human") && !isDead)
         {
-            if (healthComponent.GetHealthPoints() <= 0)
+            if (healthComponent.GetHealthPoints() < 1)
             {
                 dirX = 0;
                 isDead = true;
