@@ -15,8 +15,8 @@ public class Falling : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Human"))
         {
-            Invoke("FallPlatform", 1f);
-            Destroy(gameObject, 2f);    
+            Invoke("FallPlatform", 1.5f);
+            Destroy(gameObject, 2.5f);    
         }
     }
 
