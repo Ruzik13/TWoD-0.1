@@ -7,6 +7,7 @@ public class ActivateLever : MonoBehaviour
 	public GameObject Player;
 	public GameObject help_message;
 	public GameObject lever;
+	public GameObject platform;
 
 	private bool player_on_platform = false;
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +35,7 @@ public class ActivateLever : MonoBehaviour
 			if (Input.GetKeyDown(KeyCode.X))
 			{
 				lever.SetActive(true);
+				platform.GetComponent<MovingPlatform_Level1>().start_platform = true;
 			}
 		}
     }
