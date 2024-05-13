@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Ruzill_project.unity
     guid: 54d94c3c3a69f96499ba4332101fc2d0
   - enabled: 1
+    path: Assets/Scenes/Caves.unity
+    guid: d64ee0c8e179e7042b1cdf27d8e5c7b4
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 3c9d7604d0409f443b4fa450e76c85dc
   m_configObjects: {}

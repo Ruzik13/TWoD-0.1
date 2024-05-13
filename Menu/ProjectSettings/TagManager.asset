@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoveingPlatform
+  - Trigger_for_thought
   layers:
   - Default
   - TransparentFX
