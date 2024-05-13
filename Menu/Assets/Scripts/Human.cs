@@ -31,7 +31,7 @@ public class Human : MonoBehaviour {
 	{
 
 		if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
-			rb.AddForce(Vector2.up * 600f);
+			rb.AddForce(Vector2.up * 700f);
 
 		if (Input.GetKey(KeyCode.LeftShift))
             Speed = moveSpeedrun;
@@ -91,7 +91,13 @@ public class Human : MonoBehaviour {
 
 	void SetAnimationState()
 	{
-		if (dirX == 0) {
+		
+		
+		
+		
+	
+		if (dirX == 0) 
+		{
 			anim.SetBool ("isWalking", false);
 			anim.SetBool ("isRunning", false);
 		}
@@ -102,21 +108,26 @@ public class Human : MonoBehaviour {
 		}
 
 		if (Mathf.Abs(dirX) == moveSpeedwalk && rb.velocity.y == 0)
-			anim.SetBool ("isWalking", true);
-		
+		{
+			anim.SetBool("isWalking", true);
+			anim.SetBool("isRunning", false);
+		}
+			
+	
 		if (Mathf.Abs(dirX) == moveSpeedrun && rb.velocity.y == 0)
-			anim.SetBool ("isRunning", true);
-		else
-			anim.SetBool ("isRunning", false);
+		{
+			anim.SetBool("isRunning", true);
+			anim.SetBool("isWalking", false);
+		}
+			
 
 		if (rb.velocity.y > 0 && Input.GetKey(KeyCode.Space))
 			anim.SetBool ("isJumping", true);
+
+
+
 		
-		if (rb.velocity.y < 0) {
-			anim.SetBool ("isJumping", false);
-			anim.SetBool ("isFalling", true);
-		}
-    }
+	}
 
 	void CheckWhereToFace()
 	{
