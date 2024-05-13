@@ -81,7 +81,7 @@ public class Skeleton : MonoBehaviour
 		else
 			rb.AddForce(new Vector2(100f, 200f));
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 
 		isHurting = false;
 		enemyPatrol.Awake();

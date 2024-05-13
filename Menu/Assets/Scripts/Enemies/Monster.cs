@@ -64,7 +64,6 @@ public class Monster : MonoBehaviour
 
             else
             {
-                anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
                 StartCoroutine(Hurt(col));
             }
         }
@@ -79,10 +78,10 @@ public class Monster : MonoBehaviour
             rb.AddForce(new Vector2(-100f, 200f));
         else
             rb.AddForce(new Vector2(100f, 200f));
-
-        yield return new WaitForSeconds(2f);
-
-        isHurting = false;
+		anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
+		yield return new WaitForSeconds(1.5f);
+		
+		isHurting = false;
         enemyPatrol.Awake();
 
         HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();

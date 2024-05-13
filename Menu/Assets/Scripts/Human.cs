@@ -155,7 +155,7 @@ public class Human : MonoBehaviour {
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && col.GetComponent<RatHealth>().currentHealth > 0)
             {
                 col.GetComponent<RatHealth>().DecreaseHealth(1);
                 anim.SetBool("isAttacking", true);
@@ -165,7 +165,7 @@ public class Human : MonoBehaviour {
 			}
             else 
             {
-                StartCoroutine(Hurt(1));
+                StartCoroutine(Hurt(1, 0.1f));
             }             
         }
         if (col.gameObject.name.Equals("Bringer-of-Death") && !isDead)
@@ -177,7 +177,7 @@ public class Human : MonoBehaviour {
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0)
             {
                 col.GetComponent<MonsterHealth>().DecreaseHealth(1);
                 anim.SetBool("isAttacking", true);
@@ -187,7 +187,7 @@ public class Human : MonoBehaviour {
             }
             else
             {
-                StartCoroutine(Hurt(1));
+                StartCoroutine(Hurt(1, 0.5f));
             }
         }
         if (col.gameObject.name.Equals("Skeleton") && !isDead)
@@ -200,7 +200,7 @@ public class Human : MonoBehaviour {
 				Load_GameOver();
 			}
 
-			else if (Input.GetKey(KeyCode.S))
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<SkeletonHealth>().currentHealth > 0)
 			{
 				col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
 				anim.SetBool("isAttacking", true);
@@ -210,13 +210,13 @@ public class Human : MonoBehaviour {
 			}
 			else { 
 			
-				StartCoroutine(Hurt(1)); 
+				StartCoroutine(Hurt(1, 1.5f)); 
 			}
         }
 
     }
 
-	IEnumerator Hurt(float _damage)
+	IEnumerator Hurt(float _damage, float _time)
 	{
 		isHurting = true;
 		rb.velocity = Vector2.zero;
@@ -226,7 +226,7 @@ public class Human : MonoBehaviour {
 		else
 			rb.AddForce(new Vector2(200f, 200f));
 
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(_time);
 		anim.SetTrigger("isHurting"); 
 		healthComponent.DecreaseHealth(_damage);
 		isHurting = false;
