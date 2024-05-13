@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 public class Human : MonoBehaviour {
 
 	Rigidbody2D rb;
@@ -56,6 +57,7 @@ public class Human : MonoBehaviour {
 			dirX = 0;
 			isDead = true;
 			anim.SetTrigger("isDead"); // Memainkan animasi kematian
+			Load_GameOver();
 		}
 		
 
@@ -151,7 +153,8 @@ public class Human : MonoBehaviour {
                 dirX = 0;
                 isDead = true;
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
-            }
+				Load_GameOver();
+			}
             else if (Input.GetKey(KeyCode.S))
             {
                 col.GetComponent<RatHealth>().DecreaseHealth();
@@ -175,7 +178,8 @@ public class Human : MonoBehaviour {
                 dirX = 0;
                 isDead = true;
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
-            }
+				Load_GameOver();
+			}
             else if (Input.GetKey(KeyCode.S))
             {
                 col.GetComponent<MonsterHealth>().DecreaseHealth();
@@ -199,6 +203,7 @@ public class Human : MonoBehaviour {
 				dirX = 0;
 				isDead = true;
 				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				Load_GameOver();
 			}
 			else { 
 			healthComponent.DecreaseHealth(1);
@@ -222,6 +227,11 @@ public class Human : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 
 		isHurting = false;
+	}
+
+	public void Load_GameOver()
+	{
+		SceneManager.LoadScene("GameOver");
 	}
 
 }
