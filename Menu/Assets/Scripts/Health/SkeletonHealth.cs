@@ -1,7 +1,8 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class MonsterHealth : MonoBehaviour
+public class SkeletonHealth : MonoBehaviour
 {
 	[SerializeField] private float startingHealth;
 	public float currentHealth;
@@ -12,11 +13,10 @@ public class MonsterHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 	public void DecreaseHealth(float _damage)
-    {
-        anim = GetComponent<Animator>();
+	{
+		anim = GetComponent<Animator>();
 		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 		anim.SetTrigger("isHurting");
-    }
-
+	}
 
 }

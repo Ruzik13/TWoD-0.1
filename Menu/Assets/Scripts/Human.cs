@@ -157,18 +157,15 @@ public class Human : MonoBehaviour {
 			}
             else if (Input.GetKey(KeyCode.S))
             {
-                col.GetComponent<RatHealth>().DecreaseHealth();
+                col.GetComponent<RatHealth>().DecreaseHealth(1);
                 anim.SetBool("isAttacking", true);
             }
-            else if (col.gameObject.GetComponent<RatHealth>().GetHealthPoints() <= 0)
+            else if (col.gameObject.GetComponent<RatHealth>().currentHealth <= 0)
 			{
 			}
             else 
             {
-                healthComponent.DecreaseHealth(1);
-                anim.SetBool("isAttacking", false);
-                anim.SetTrigger("isHurting"); // Memainkan animasi terluka
-                StartCoroutine(Hurt());
+                StartCoroutine(Hurt(1));
             }             
         }
         if (col.gameObject.name.Equals("Bringer-of-Death") && !isDead)
@@ -182,21 +179,18 @@ public class Human : MonoBehaviour {
 			}
             else if (Input.GetKey(KeyCode.S))
             {
-                col.GetComponent<MonsterHealth>().DecreaseHealth();
+                col.GetComponent<MonsterHealth>().DecreaseHealth(1);
                 anim.SetBool("isAttacking", true);
             }
-            else if (col.gameObject.GetComponent<MonsterHealth>().GetHealthPoints() <= 0)
+            else if (col.gameObject.GetComponent<MonsterHealth>().currentHealth <= 0)
             {
             }
             else
             {
-                healthComponent.DecreaseHealth(1);
-                anim.SetBool("isAttacking", false);
-                anim.SetTrigger("isHurting"); // Memainkan animasi terluka
-                StartCoroutine(Hurt());
+                StartCoroutine(Hurt(1));
             }
         }
-        if (col.gameObject.name.Equals("Suriken") && !isDead)
+        if (col.gameObject.name.Equals("Skeleton") && !isDead)
 		{
 			if (healthComponent.currentHealth <= 0)
 			{
@@ -205,16 +199,24 @@ public class Human : MonoBehaviour {
 				anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
+
+			else if (Input.GetKey(KeyCode.S))
+			{
+				col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
+				anim.SetBool("isAttacking", true);
+			}
+			else if (col.gameObject.GetComponent<SkeletonHealth>().currentHealth <= 0)
+			{
+			}
 			else { 
-			healthComponent.DecreaseHealth(1);
-			anim.SetTrigger("isHurting"); // Memainkan animasi terluka
-			StartCoroutine(Hurt());
+			
+				StartCoroutine(Hurt(1)); 
 			}
         }
 
     }
 
-	IEnumerator Hurt()
+	IEnumerator Hurt(float _damage)
 	{
 		isHurting = true;
 		rb.velocity = Vector2.zero;
@@ -224,8 +226,9 @@ public class Human : MonoBehaviour {
 		else
 			rb.AddForce(new Vector2(200f, 200f));
 
-		yield return new WaitForSeconds(0.5f);
-
+		yield return new WaitForSeconds(1.5f);
+		anim.SetTrigger("isHurting"); 
+		healthComponent.DecreaseHealth(_damage);
 		isHurting = false;
 	}
 

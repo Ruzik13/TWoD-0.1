@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Monster : MonoBehaviour
+public class Rat : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
-    MonsterHealth healthComponent;
+    RatHealth healthComponent;
     bool isHurting, isDead;
     bool facingRight = true;
     Vector3 localScale;
@@ -20,7 +20,14 @@ public class Monster : MonoBehaviour
         if (enemyPatrol != null)
             enemyPatrol.enabled = !isDead;
 
-    }
+		if (healthComponent.currentHealth < 1)
+		{
+			dirX = 0;
+			isDead = true;
+			anim.SetTrigger("isDead"); // Memainkan animasi kematian
+		}
+
+	}
 
    
 
@@ -31,7 +38,7 @@ public class Monster : MonoBehaviour
         anim = GetComponent<Animator>();
         localScale = transform.localScale;
         enemyPatrol = GetComponentInParent<EnemyPatrol>();  
-        healthComponent = GetComponent<MonsterHealth>();
+        healthComponent = GetComponent<RatHealth>();
         isDead = false;
     }
     void CheckWhereToFace()
@@ -55,7 +62,7 @@ public class Monster : MonoBehaviour
        
         if (col.gameObject.name.Equals("Human") && !isDead)
         {
-            if (healthComponent.GetHealthPoints() < 1)
+            if (healthComponent.currentHealth < 1)
             {
                 dirX = 0;
                 isDead = true;

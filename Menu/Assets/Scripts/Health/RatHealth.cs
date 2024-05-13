@@ -3,19 +3,21 @@ using System.Collections;
 
 public class RatHealth : MonoBehaviour
 {
-    [SerializeField] private int healthPoints;
-    Animator anim;
+	[SerializeField] private float startingHealth;
+	public float currentHealth;
+	Animator anim;
 
-    public void DecreaseHealth()
+	private void Awake()
+	{
+		currentHealth = startingHealth;
+	}
+
+	public void DecreaseHealth(float _damage)
     {
         anim = GetComponent<Animator>();
-        healthPoints--;
-        anim.SetTrigger("isHurting");
+		currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+		anim.SetTrigger("isHurting");
     }
 
-    public int GetHealthPoints()
-    {
-        return healthPoints;
-    }
 
 }
