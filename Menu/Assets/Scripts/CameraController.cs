@@ -13,13 +13,24 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform Human;
     [SerializeField] private float aheadDistance;
     [SerializeField] private float cameraSpeed;
-    private float lookAhead;
+
+    //Limits camera
+    [SerializeField] float leftLimit;
+    [SerializeField] float rightLimit;
+    [SerializeField] float bottomLimit;
+    [SerializeField] float upperLimit;
+	private float lookAhead;
     private void Update()
     {
         // Room camera
         // transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z), ref velocity, speed);
 
-        transform.position = new Vector3(Human.position.x + lookAhead, Human.position.y + 4, transform.position.z);
+        transform.position = new Vector3
+            (
+            Mathf.Clamp(Human.position.x + lookAhead, leftLimit, rightLimit),
+            Mathf.Clamp(Human.position.y + 2, bottomLimit, upperLimit),
+            transform.position.z
+            );
         lookAhead = Mathf.Lerp(lookAhead, (aheadDistance * Human.localScale.x), Time.deltaTime * cameraSpeed);
     }
 
