@@ -214,7 +214,32 @@ public class Human : MonoBehaviour {
 			}
         }
 
-    }
+		if (col.gameObject.name.Equals("FlyingEye") && !isDead)
+		{
+			if (healthComponent.currentHealth <= 0)
+			{
+				dirX = 0;
+				isDead = true;
+				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				Load_GameOver();
+			}
+
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<FlyingEyeHealth>().currentHealth > 0)
+			{
+				col.GetComponent<FlyingEyeHealth>().DecreaseHealth(1);
+				anim.SetBool("isAttacking", true);
+			}
+			else if (col.gameObject.GetComponent<FlyingEyeHealth>().currentHealth <= 0)
+			{
+			}
+			else
+			{
+
+				StartCoroutine(Hurt(1, 0.5f));
+			}
+		}
+
+	}
 
 	IEnumerator Hurt(float _damage, float _time)
 	{
