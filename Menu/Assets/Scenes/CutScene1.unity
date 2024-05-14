@@ -9903,6 +9903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a23a6933e105c341a9e11d8e416ea2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthComponent: {fileID: 1890825184}
 --- !u!1 &1495946616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12503,9 +12504,10 @@ GameObject:
   - component: {fileID: 1890825180}
   - component: {fileID: 1890825179}
   - component: {fileID: 1890825178}
+  - component: {fileID: 1890825184}
   m_Layer: 0
   m_Name: Human
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12677,6 +12679,20 @@ Transform:
   - {fileID: 252372228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890825184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890825177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5ba850c0375c64fa8d1971181f60b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 5
+  currentHealth: 0
 --- !u!1 &1901832210
 GameObject:
   m_ObjectHideFlags: 0

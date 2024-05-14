@@ -7,7 +7,7 @@ public class HumanHealth : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
 	public float currentHealth;
-	private void Awake()
+	public void Awake()
 	{
 		currentHealth = startingHealth;
 	}

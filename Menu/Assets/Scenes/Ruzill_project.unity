@@ -37489,7 +37489,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.3
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -41274,7 +41274,7 @@ Transform:
   m_GameObject: {fileID: 777499355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.69, y: -4.29, z: 0}
+  m_LocalPosition: {x: 92.62, y: -4.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41994,7 +41994,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 43.74871, y: -2.9813786}
@@ -42037,6 +42037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ff674ac1ed6c44db8b23cc4c3eb24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthComponent: {fileID: 777499362}
 --- !u!1 &979746332
 GameObject:
   m_ObjectHideFlags: 0
