@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameOverFall : MonoBehaviour
 {
 	[SerializeField] private HumanHealth healthComponent;
+	[SerializeField] private RatHealth ratHealthComponent;
 	float hp = 0;
+	float hp_rat = 0;
 	bool new_trigger = false;
 	private void Awake()
 	{
@@ -14,8 +16,13 @@ public class GameOverFall : MonoBehaviour
 		{
 			healthComponent = gameObject.AddComponent<HumanHealth>();
 		}
+		if(!ratHealthComponent)
+		{
+			ratHealthComponent = gameObject.AddComponent<RatHealth>();
+		}
 
 		healthComponent.Awake();
+		ratHealthComponent.Awake();
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -30,7 +37,9 @@ public class GameOverFall : MonoBehaviour
 			else
 			{
 				hp = healthComponent.currentHealth - 1;
+				hp_rat = ratHealthComponent.currentHealth;
 				PlayerPrefs.SetFloat("HP", hp);
+				PlayerPrefs.SetFloat("HPrat", hp_rat);
 				SceneManager.LoadScene("Ruzill_project");
 			}
 
@@ -40,18 +49,22 @@ public class GameOverFall : MonoBehaviour
 
 	private void OnEnable()
 	{
-		if (PlayerPrefs.HasKey("HP"))
+		if (PlayerPrefs.HasKey("HP") && PlayerPrefs.HasKey("HPrat"))
 		{
 			hp = PlayerPrefs.GetFloat("HP");
+			hp_rat = PlayerPrefs.GetFloat("HPrat");
 			healthComponent.currentHealth = hp;
+			ratHealthComponent.currentHealth = hp_rat;
 		}
 		else
 		{
 			healthComponent.Awake();
+			ratHealthComponent.Awake();
 		}
 
 		// Удаляем ключ "HP" после его использования
 		PlayerPrefs.DeleteKey("HP");
+		PlayerPrefs.DeleteKey("HPrat");
 
 
 	}

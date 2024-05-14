@@ -7,7 +7,7 @@ public class RatHealth : MonoBehaviour
 	public float currentHealth;
 	Animator anim;
 
-	private void Awake()
+	public void Awake()
 	{
 		currentHealth = startingHealth;
 	}

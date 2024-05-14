@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Healthbar : MonoBehaviour
+public class HealthbarRat : MonoBehaviour
 {
-	[SerializeField] private HumanHealth healthComponent;
+	[SerializeField] private RatHealth healthComponent;
 	[SerializeField] private Image totalhealthBar;
 	[SerializeField] private Image currenthealthBar;
 
@@ -12,9 +12,9 @@ public class Healthbar : MonoBehaviour
 	{
 		if (!healthComponent)
 		{
-			healthComponent = gameObject.AddComponent<HumanHealth>();
+			healthComponent = gameObject.AddComponent<RatHealth>();
 		}
-		totalhealthBar.fillAmount = healthComponent.currentHealth / 10;
+		totalhealthBar.fillAmount = 3 / 10;
 	}
 	private void Update()
 	{

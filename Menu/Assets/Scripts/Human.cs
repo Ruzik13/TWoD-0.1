@@ -177,7 +177,7 @@ public class Human : MonoBehaviour {
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-            else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0)
+            else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0 && SceneManager.GetActiveScene().buildIndex != 2)
             {
                 col.GetComponent<MonsterHealth>().DecreaseHealth(1);
                 anim.SetBool("isAttacking", true);
