@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Rat : MonoBehaviour
+public class Rat : Sounds
 {
     Rigidbody2D rb;
     Animator anim;

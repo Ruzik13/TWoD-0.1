@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-public class Human : MonoBehaviour {
+public class Human : Sounds {
 
 	Rigidbody2D rb;
 	Animator anim;
@@ -32,10 +32,13 @@ public class Human : MonoBehaviour {
 	{
 
 		if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
+		{
+            PlaySound(sounds[1]);
 			rb.AddForce(Vector2.up * 700f);
+        }
 
 		if (Input.GetKey(KeyCode.LeftShift))
-            Speed = moveSpeedrun;
+			Speed = moveSpeedrun;
 		else
             Speed = moveSpeedwalk;
 
@@ -47,6 +50,7 @@ public class Human : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.S))
 		{
+			PlaySound(sounds[2]);
 			anim.SetBool("isAttacking", true);
 			StartCoroutine(EndAttack());
 
@@ -72,8 +76,9 @@ public class Human : MonoBehaviour {
 	void PlayerAttack()
     {
 		if (Input.GetKey(KeyCode.S))
-			anim.SetBool("isAttacking", true);
-			
+		{
+            anim.SetBool("isAttacking", true);
+        }
 		else
 			anim.SetBool("isAttacking", false);
 		
@@ -111,6 +116,7 @@ public class Human : MonoBehaviour {
 
 		if (Mathf.Abs(dirX) == moveSpeedwalk && rb.velocity.y == 0)
 		{
+			PlaySound(sounds[0]);
 			anim.SetBool("isWalking", true);
 			anim.SetBool("isRunning", false);
 		}
@@ -252,7 +258,8 @@ public class Human : MonoBehaviour {
 			rb.AddForce(new Vector2(200f, 200f));
 
 		yield return new WaitForSeconds(_time);
-		anim.SetTrigger("isHurting"); 
+		anim.SetTrigger("isHurting");
+		PlaySound(sounds[3]);
 		healthComponent.DecreaseHealth(_damage);
 		isHurting = false;
 	}
