@@ -14,7 +14,7 @@ public class Healthbar : MonoBehaviour
 		{
 			healthComponent = gameObject.AddComponent<HumanHealth>();
 		}
-		totalhealthBar.fillAmount = healthComponent.currentHealth / 10;
+		totalhealthBar.fillAmount = 5 / 10;
 	}
 	private void Update()
 	{
