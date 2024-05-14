@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 826c46a3bb174a44a8a9f685ef883985
+guid: ef2e8804d92529b4dbd8538d69151bf3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638512398874788501
+  platformSettingsDirtyTick: 638512929123923476
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: thought1
+  - name: thought5
     originalName: 
-    pivot: {x: 0.4957265, y: -2.2}
+    pivot: {x: 0.59016395, y: -2.418182}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 117
+      width: 122
       height: 55
-    spriteID: 6e2bbd609510ad541ad952b17bc32dea
+    spriteID: 1cc074a490f34da46bfccce612ce780a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1354679382
-    name: thought1
+    guid: -1199445458
+    name: thought5
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: thought1
+    - name: thought5
       frameIndex: 0
       cellRect:
-        x: 92
-        y: 121
-        width: 117
+        x: 78
+        y: 133
+        width: 122
         height: 55
-      spriteId: 6e2bbd609510ad541ad952b17bc32dea
+      spriteId: 1cc074a490f34da46bfccce612ce780a
     linkedCells: []
     parentIndex: -1
   platformSettings:
