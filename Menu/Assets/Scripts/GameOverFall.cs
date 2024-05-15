@@ -40,7 +40,7 @@ public class GameOverFall : MonoBehaviour
 				hp_rat = ratHealthComponent.currentHealth;
 				PlayerPrefs.SetFloat("HP", hp);
 				PlayerPrefs.SetFloat("HPrat", hp_rat);
-				SceneManager.LoadScene("Ruzill_project");
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 
 		}
