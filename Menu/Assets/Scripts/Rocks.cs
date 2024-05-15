@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocks : MonoBehaviour
+public class Rocks : Sounds
 {
 	[SerializeField] private HumanHealth healthComponent;
 	[SerializeField] private Animator anim;
@@ -14,6 +14,8 @@ public class Rocks : MonoBehaviour
 		{
 			healthComponent.DecreaseHealth(1);
 			anim.SetTrigger("isHurting");
+			PlaySound(sounds[3]);
+
 		}
 
 		if (collision.gameObject.name.Equals("RockTrigger"))

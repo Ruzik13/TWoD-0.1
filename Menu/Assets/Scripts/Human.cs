@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-public class Human : Sounds {
+public class Human : Sounds
+{
 
 	Rigidbody2D rb;
 	Animator anim;
@@ -18,6 +20,9 @@ public class Human : Sounds {
 	bool isHurting, isDead;
     bool facingRight = true;
 	Vector3 localScale;
+	public float delayTime = 2.5f; // Таймаут до следующего срабатывания звука
+	private float lastTriggerTime = 0f; // Время последнего срабатывания звука
+
 
 	// Use this for initialization
 	void Start () {
@@ -63,8 +68,29 @@ public class Human : Sounds {
 			anim.SetTrigger("isDead"); // Memainkan animasi kematian
 			Load_GameOver();
 		}
-		
 
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && rb.velocity.y == 0)
+		{
+			if(Input.GetKey(KeyCode.LeftShift))
+				StartCoroutine(PlaySoundAfterDelay());
+
+
+			else if (!audioSrc.isPlaying)
+				PlaySound(sounds[0]);
+
+		}
+	}
+
+	IEnumerator PlaySoundAfterDelay()
+	{
+		yield return new WaitForSeconds(delayTime);
+
+		// Проверяем, что прошло достаточно времени с момента последнего срабатывания
+		if (Time.time - lastTriggerTime > delayTime)
+		{
+			PlaySound(sounds[0]); // Запускаем звук
+			lastTriggerTime = Time.time; // Обновляем время последнего срабатывания
+		}
 	}
 
 	IEnumerator EndAttack()
@@ -116,7 +142,7 @@ public class Human : Sounds {
 
 		if (Mathf.Abs(dirX) == moveSpeedwalk && rb.velocity.y == 0)
 		{
-			PlaySound(sounds[0]);
+			
 			anim.SetBool("isWalking", true);
 			anim.SetBool("isRunning", false);
 		}
