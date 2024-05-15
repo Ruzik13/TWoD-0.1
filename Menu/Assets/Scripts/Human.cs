@@ -242,7 +242,7 @@ public class Human : Sounds
 			}
 			else { 
 			
-				StartCoroutine(Hurt(1, 1.5f)); 
+				StartCoroutine(Hurt(1, 2f)); 
 			}
         }
 
@@ -283,11 +283,12 @@ public class Human : Sounds
 		else
 			rb.AddForce(new Vector2(200f, 200f));
 
-		yield return new WaitForSeconds(_time);
+		
 		anim.SetTrigger("isHurting");
 		PlaySound(sounds[3]);
 		healthComponent.DecreaseHealth(_damage);
 		isHurting = false;
+		yield return new WaitForSeconds(_time);
 	}
 
 	public void Load_GameOver()
