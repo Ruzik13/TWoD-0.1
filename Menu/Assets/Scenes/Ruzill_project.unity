@@ -47930,6 +47930,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 212bee7567965b242a2823408199f32a, type: 3}
   moveSpeedwalk: 3
   moveSpeedrun: 8
+  delayTime: 2.5
 --- !u!95 &777499357
 Animator:
   serializedVersion: 5
@@ -48074,7 +48075,7 @@ Transform:
   m_GameObject: {fileID: 777499355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: -3.58, z: 0}
+  m_LocalPosition: {x: 183.8, y: -3.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

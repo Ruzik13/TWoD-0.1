@@ -10,7 +10,8 @@ public class TimelineExit : MonoBehaviour
     {
         if (GetComponent<PlayableDirector>().state == PlayState.Paused)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			PlayerPrefs.SetString("2level", "Loaded");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
