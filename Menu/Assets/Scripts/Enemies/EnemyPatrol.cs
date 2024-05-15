@@ -20,7 +20,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Enemy Animator")]
     [SerializeField] private Animator anim;
 
-    private float defaultspeed;
+	private float defaultspeed;
 
     public void notmove()
     {

@@ -12,7 +12,8 @@ public class LoadScene3 : MonoBehaviour
         if (GetComponent<PlayableDirector>().state == PlayState.Paused)
         {
             mainCamera.GetComponent<CameraController>().enabled = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			PlayerPrefs.SetString("3level", "Loaded");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

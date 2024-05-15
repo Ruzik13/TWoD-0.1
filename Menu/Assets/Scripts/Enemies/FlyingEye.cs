@@ -6,7 +6,9 @@ public class FlyingEye : MonoBehaviour
 {
 	Rigidbody2D rb;
 	Animator anim;
-	MonsterHealth healthComponent;
+	BoxCollider2D collider;
+	CircleCollider2D circle;
+	FlyingEyeHealth healthComponent;
 	bool isHurting, isDead;
 	bool facingRight = true;
 	Vector3 localScale;
@@ -30,9 +32,11 @@ public class FlyingEye : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		collider = GetComponent<BoxCollider2D>();
+		circle = GetComponent<CircleCollider2D>();
 		localScale = transform.localScale;
 		enemyPatrol = GetComponentInParent<EnemyPatrol>();
-		healthComponent = GetComponent<MonsterHealth>();
+		healthComponent = GetComponent<FlyingEyeHealth>();
 		isDead = false;
 	}
 	void CheckWhereToFace()
@@ -61,6 +65,10 @@ public class FlyingEye : MonoBehaviour
 				dirX = 0;
 				isDead = true;
 				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+				rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+				rb.isKinematic = false;
+				circle.enabled = false;
 			}
 
 			else
