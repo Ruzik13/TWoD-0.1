@@ -6,7 +6,7 @@ public class FlyingEye : MonoBehaviour
 {
 	Rigidbody2D rb;
 	Animator anim;
-	MonsterHealth healthComponent;
+	FlyingEyeHealth healthComponent;
 	bool isHurting, isDead;
 	bool facingRight = true;
 	Vector3 localScale;
@@ -32,7 +32,7 @@ public class FlyingEye : MonoBehaviour
 		anim = GetComponent<Animator>();
 		localScale = transform.localScale;
 		enemyPatrol = GetComponentInParent<EnemyPatrol>();
-		healthComponent = GetComponent<MonsterHealth>();
+		healthComponent = GetComponent<FlyingEyeHealth>();
 		isDead = false;
 	}
 	void CheckWhereToFace()
