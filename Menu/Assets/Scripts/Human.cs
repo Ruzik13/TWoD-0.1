@@ -22,6 +22,7 @@ public class Human : Sounds
 	Vector3 localScale;
 	public float delayTime = 2.5f; // Таймаут до следующего срабатывания звука
 	private float lastTriggerTime = 0f; // Время последнего срабатывания звука
+	float hp;
 
 
 	// Use this for initialization
@@ -30,6 +31,15 @@ public class Human : Sounds
 		anim = GetComponent<Animator> ();
 		localScale = transform.localScale;
         healthComponent = GetComponent<HumanHealth> ();
+		if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+		{
+			if(PlayerPrefs.HasKey("Health") && PlayerPrefs.HasKey("NewLevel"))
+		{
+				hp = PlayerPrefs.GetFloat("Health");
+				healthComponent.currentHealth = hp;
+				PlayerPrefs.DeleteKey("NewLevel");
+			}
+		}
 	}
 
 	// Update is called once per frame
@@ -155,7 +165,7 @@ public class Human : Sounds
 		}
 			
 
-		if (rb.velocity.y > 0 && Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space))
 			anim.SetBool ("isJumping", true);
 
 
@@ -279,9 +289,9 @@ public class Human : Sounds
 		rb.velocity = Vector2.zero;
 
 		if (facingRight)
-			rb.AddForce(new Vector2(-200f, 200f));
+			rb.AddForce(new Vector2(-100f, 100f));
 		else
-			rb.AddForce(new Vector2(200f, 200f));
+			rb.AddForce(new Vector2(100f, 100f));
 
 		
 		anim.SetTrigger("isHurting");
