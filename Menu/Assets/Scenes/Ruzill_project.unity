@@ -41128,6 +41128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 777499355}
   Camera: {fileID: 1625280647}
+  healthComponent: {fileID: 0}
   CutScene: {fileID: 1465066835}
 --- !u!1 &80076213
 GameObject:
@@ -46837,6 +46838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timeline: {fileID: 1203874682}
   mainCamera: {fileID: 1625280647}
+  healthComponent: {fileID: 777499362}
 --- !u!61 &674253629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51107,6 +51109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dbc7f0f9e18684b90f143c2cb27e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthComponent: {fileID: 777499362}
 --- !u!1 &1210625159
 GameObject:
   m_ObjectHideFlags: 0
@@ -53393,6 +53396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 777499355}
   Camera: {fileID: 1625280647}
+  healthComponent: {fileID: 0}
 --- !u!1 &1474780388
 GameObject:
   m_ObjectHideFlags: 0
