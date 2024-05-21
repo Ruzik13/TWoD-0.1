@@ -281,7 +281,41 @@ public class Human : Sounds
 			}
 		}
 
-		if(col.gameObject.name.Equals("trap_1"))
+		if (col.gameObject.name.Equals("Goblin") && !isDead)
+		{
+			if (healthComponent.currentHealth <= 0)
+			{
+				dirX = 0;
+				isDead = true;
+				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				Load_GameOver();
+			}
+
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<GoblinHealth>().currentHealth > 0)
+			{
+				anim.SetBool("isAttacking", true);
+				if (col.GetComponent<GoblinHealth>().currentHealth <= 1)
+				{
+					col.GetComponent<GoblinHealth>().DecreaseHealth(1);
+					col.GetComponent<Goblin>().enemydead();
+				}
+				else
+					col.GetComponent<GoblinHealth>().DecreaseHealth(1);
+				
+				
+			}
+			else if (col.gameObject.GetComponent<GoblinHealth>().currentHealth <= 0)
+			{
+			}
+			else
+			{
+
+				StartCoroutine(Hurt(1, 1.5f));
+			}
+		}
+
+
+		if (col.gameObject.name.Equals("trap_1"))
 		{
 			if(healthComponent.currentHealth <= 0)
 			{

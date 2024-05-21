@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEye : MonoBehaviour
+public class Goblin : MonoBehaviour
 {
 	Rigidbody2D rb;
-	Animator anim;
-	BoxCollider2D collider;
 	CircleCollider2D circle;
-	FlyingEyeHealth healthComponent;
+	Human human;
+	BoxCollider2D box;
+	Animator anim;
+	GoblinHealth healthComponent;
 	bool isHurting, isDead;
 	bool facingRight = true;
 	Vector3 localScale;
 	float dirX;
-
 	private EnemyPatrol enemyPatrol;
 
 	void Update()
@@ -23,8 +23,6 @@ public class FlyingEye : MonoBehaviour
 		if (enemyPatrol != null)
 			enemyPatrol.enabled = !isDead;
 
-		if (healthComponent.currentHealth <= 0 && !isDead)
-			enemydead();
 	}
 
 
@@ -34,12 +32,14 @@ public class FlyingEye : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
-		collider = GetComponent<BoxCollider2D>();
 		circle = GetComponent<CircleCollider2D>();
+		box = GetComponent<BoxCollider2D>();
+		human = GetComponent<Human>();
 		localScale = transform.localScale;
 		enemyPatrol = GetComponentInParent<EnemyPatrol>();
-		healthComponent = GetComponent<FlyingEyeHealth>();
+		healthComponent = GetComponent<GoblinHealth>();
 		isDead = false;
+		
 	}
 	void CheckWhereToFace()
 	{
@@ -64,26 +64,28 @@ public class FlyingEye : MonoBehaviour
 		{
 			if (healthComponent.currentHealth < 1)
 			{
-				enemydead();
+				
 			}
 
 			else
 			{
+				anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
 				StartCoroutine(Hurt(col));
 			}
 		}
 	}
 
-	private void enemydead()
+	public void enemydead()
 	{
 		dirX = 0;
 		isDead = true;
 		anim.SetTrigger("isDead"); // Memainkan animasi kematian
 		rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
-		// rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-		rb.isKinematic = false;
 		circle.enabled = false;
+		box.enabled = false;
+		
 	}
+
 
 	IEnumerator Hurt(Collider2D col)
 	{
@@ -94,8 +96,8 @@ public class FlyingEye : MonoBehaviour
 			rb.AddForce(new Vector2(-100f, 200f));
 		else
 			rb.AddForce(new Vector2(100f, 200f));
-		anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
-		yield return new WaitForSeconds(1.5f);
+
+		yield return new WaitForSeconds(1f);
 
 		isHurting = false;
 		enemyPatrol.Awake();
@@ -103,7 +105,7 @@ public class FlyingEye : MonoBehaviour
 		HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();
 		if (humanHealth != null && humanHealth.currentHealth <= 0)
 		{
-			anim.SetBool("isFlying", false);
+			anim.SetBool("isRunning", false);
 			enemyPatrol.notmove();
 		}
 	}
