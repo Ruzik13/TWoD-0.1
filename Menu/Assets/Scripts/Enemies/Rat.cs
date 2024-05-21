@@ -4,7 +4,9 @@ using UnityEngine;
 public class Rat : Sounds
 {
     Rigidbody2D rb;
-    Animator anim;
+	CircleCollider2D circle;
+    BoxCollider2D box;
+	Animator anim;
     RatHealth healthComponent;
     bool isHurting, isDead;
     bool facingRight = true;
@@ -20,12 +22,6 @@ public class Rat : Sounds
         if (enemyPatrol != null)
             enemyPatrol.enabled = !isDead;
 
-		if (healthComponent.currentHealth < 1)
-		{
-			dirX = 0;
-			isDead = true;
-			anim.SetTrigger("isDead"); // Memainkan animasi kematian
-		}
 
 	}
 
@@ -35,7 +31,9 @@ public class Rat : Sounds
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+		circle = GetComponent<CircleCollider2D>();
+		box = GetComponent<BoxCollider2D>();
+		anim = GetComponent<Animator>();
         localScale = transform.localScale;
         enemyPatrol = GetComponentInParent<EnemyPatrol>();  
         healthComponent = GetComponent<RatHealth>();
@@ -64,9 +62,7 @@ public class Rat : Sounds
         {
             if (healthComponent.currentHealth < 1)
             {
-                dirX = 0;
-                isDead = true;
-                anim.SetTrigger("isDead"); // Memainkan animasi kematian
+
             }
 
             else
@@ -77,7 +73,25 @@ public class Rat : Sounds
         }
     }
 
-    IEnumerator Hurt(Collider2D col)
+    public void calldead()
+    {
+        StartCoroutine(enemydead());
+    }
+
+	public IEnumerator enemydead()
+	{
+		dirX = 0;
+		isDead = true;
+		anim.SetTrigger("isDead"); // Memainkan animasi kematian
+		yield return new WaitForSeconds(1f);
+		gameObject.SetActive(false);
+		rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+		circle.enabled = false;
+		box.enabled = false;
+	}
+
+
+	IEnumerator Hurt(Collider2D col)
     {
         isHurting = true;
         rb.velocity = Vector2.zero;

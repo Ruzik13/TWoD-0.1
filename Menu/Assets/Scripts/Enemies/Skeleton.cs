@@ -5,6 +5,8 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
 	Rigidbody2D rb;
+	CircleCollider2D circle;
+	BoxCollider2D box;
 	Animator anim;
 	SkeletonHealth healthComponent;
 	bool isHurting, isDead;
@@ -30,6 +32,8 @@ public class Skeleton : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		circle = GetComponent<CircleCollider2D>();
+		box = GetComponent<BoxCollider2D>();
 		localScale = transform.localScale;
 		enemyPatrol = GetComponentInParent<EnemyPatrol>();
 		healthComponent = GetComponent<SkeletonHealth>();
@@ -58,9 +62,7 @@ public class Skeleton : MonoBehaviour
 		{
 			if (healthComponent.currentHealth < 1)
 			{
-				dirX = 0;
-				isDead = true;
-				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				
 			}
 
 			else
@@ -69,6 +71,23 @@ public class Skeleton : MonoBehaviour
 				StartCoroutine(Hurt(col));
 			}
 		}
+	}
+
+	public void calldead()
+	{
+		StartCoroutine(enemydead());
+	}
+
+	public IEnumerator enemydead()
+	{
+		dirX = 0;
+		isDead = true;
+		anim.SetTrigger("isDead"); // Memainkan animasi kematian
+		yield return new WaitForSeconds(0.5f);
+		gameObject.SetActive(false);
+		rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+		circle.enabled = false;
+		box.enabled = false;
 	}
 
 	IEnumerator Hurt(Collider2D col)

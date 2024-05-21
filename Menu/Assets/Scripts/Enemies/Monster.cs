@@ -4,7 +4,9 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator anim;
+	CircleCollider2D circle;
+	BoxCollider2D box;
+	Animator anim;
     MonsterHealth healthComponent;
     bool isHurting, isDead;
     bool facingRight = true;
@@ -28,7 +30,9 @@ public class Monster : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+		circle = GetComponent<CircleCollider2D>();
+		box = GetComponent<BoxCollider2D>();
+		anim = GetComponent<Animator>();
         localScale = transform.localScale;
         enemyPatrol = GetComponentInParent<EnemyPatrol>();  
         healthComponent = GetComponent<MonsterHealth>();
@@ -57,38 +61,54 @@ public class Monster : MonoBehaviour
         {
             if (healthComponent.currentHealth < 1)
             {
-                dirX = 0;
-                isDead = true;
-                anim.SetTrigger("isDead"); // Memainkan animasi kematian
+                
             }
 
             else
             {
-                StartCoroutine(Hurt(col));
+				anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
+				StartCoroutine(Hurt(col));
             }
         }
     }
 
-    IEnumerator Hurt(Collider2D col)
-    {
-        isHurting = true;
-        rb.velocity = Vector2.zero;
-        enemyPatrol.notmove();
-        if (facingRight)
-            rb.AddForce(new Vector2(-100f, 200f));
-        else
-            rb.AddForce(new Vector2(100f, 200f));
-		anim.SetTrigger("isAttacking"); // Memainkan animasi terluka
-		yield return new WaitForSeconds(1.5f);
-		
-		isHurting = false;
-        enemyPatrol.Awake();
+	public void calldead()
+	{
+		StartCoroutine(enemydead());
+	}
 
-        HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();
-        if (humanHealth != null && humanHealth.currentHealth <= 0)
-        {
-            anim.SetBool("isRunning", false);
-            enemyPatrol.notmove();
-        }
-    }
+	public IEnumerator enemydead()
+	{
+		dirX = 0;
+		isDead = true;
+		anim.SetTrigger("isDead"); // Memainkan animasi kematian
+		yield return new WaitForSeconds(1.5f);
+		gameObject.SetActive(false);
+		rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+		circle.enabled = false;
+		box.enabled = false;
+	}
+
+	IEnumerator Hurt(Collider2D col)
+    {
+		isHurting = true;
+		rb.velocity = Vector2.zero;
+		enemyPatrol.notmove();
+		if (facingRight)
+			rb.AddForce(new Vector2(-100f, 200f));
+		else
+			rb.AddForce(new Vector2(100f, 200f));
+
+		yield return new WaitForSeconds(1f);
+
+		isHurting = false;
+		enemyPatrol.Awake();
+
+		HumanHealth humanHealth = col.gameObject.GetComponent<HumanHealth>();
+		if (humanHealth != null && humanHealth.currentHealth <= 0)
+		{
+			anim.SetBool("isRunning", false);
+			enemyPatrol.notmove();
+		}
+	}
 }
