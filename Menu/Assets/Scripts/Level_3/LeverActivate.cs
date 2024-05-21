@@ -6,6 +6,7 @@ using UnityEngine;
 public class LeverActivate : MonoBehaviour
 {
     public GameObject platform;
+	public GameObject getKeyDownX;
 
 	private bool playerInTrigger = false;
 
@@ -13,8 +14,15 @@ public class LeverActivate : MonoBehaviour
 	{
 		if (collision.gameObject.name == "Human")
 		{
+			getKeyDownX.SetActive(true);
 			playerInTrigger = true;
 		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		getKeyDownX.SetActive(false);
+		playerInTrigger = false;
 	}
 
 	private void Update()
