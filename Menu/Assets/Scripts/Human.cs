@@ -281,6 +281,22 @@ public class Human : Sounds
 			}
 		}
 
+		if(col.gameObject.name.Equals("trap_1"))
+		{
+			if(healthComponent.currentHealth <= 0)
+			{
+				dirX = 0;
+				isDead = true;
+				anim.SetTrigger("isDead"); // Memainkan animasi kematian
+				Load_GameOver();
+			}
+		}
+
+	}
+
+	public void callHurt(float _damage, float _time)
+	{
+		StartCoroutine(Hurt(_damage, _time));
 	}
 
 	IEnumerator Hurt(float _damage, float _time)
