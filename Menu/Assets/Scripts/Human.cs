@@ -45,13 +45,6 @@ public class Human : Sounds
 	// Update is called once per frame
 	void Update()
 	{
-
-		if (Input.GetButtonDown("Jump") && !isDead && rb.velocity.y == 0)
-		{
-            PlaySound(sounds[1]);
-			rb.AddForce(Vector2.up * 700f);
-        }
-
 		if (Input.GetKey(KeyCode.LeftShift))
 			Speed = moveSpeedrun;
 		else
@@ -165,8 +158,13 @@ public class Human : Sounds
 		}
 			
 
-		if (Input.GetKey(KeyCode.Space))
-			anim.SetBool ("isJumping", true);
+		if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
+		{
+			anim.SetBool("isJumping", true);
+			rb.velocity = new Vector2(rb.velocity.x, 14);
+
+		}
+			
 
 
 
@@ -203,7 +201,7 @@ public class Human : Sounds
 				if (col.GetComponent<RatHealth>().currentHealth <= 1)
 				{
 					col.GetComponent<RatHealth>().DecreaseHealth(1);
-					col.GetComponent<Rat>().calldead();
+					col.GetComponent<Rat>().Calldead();
 				}
 				else
 					col.GetComponent<RatHealth>().DecreaseHealth(1);
@@ -262,7 +260,7 @@ public class Human : Sounds
 				if (col.GetComponent<SkeletonHealth>().currentHealth <= 1)
 				{
 					col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
-					col.GetComponent<Skeleton>().calldead();
+					col.GetComponent<Skeleton>().Calldead();
 				}
 				else
 					col.GetComponent<SkeletonHealth>().DecreaseHealth(1);

@@ -7,7 +7,7 @@ public class Skeleton : MonoBehaviour
 	Rigidbody2D rb;
 	CircleCollider2D circle;
 	BoxCollider2D box;
-	Animator anim;
+	[SerializeField] Animator anim;
 	SkeletonHealth healthComponent;
 	bool isHurting, isDead;
 	bool facingRight = true;
@@ -31,7 +31,7 @@ public class Skeleton : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
+		// anim = GetComponent<Animator>();
 		circle = GetComponent<CircleCollider2D>();
 		box = GetComponent<BoxCollider2D>();
 		localScale = transform.localScale;
@@ -73,12 +73,12 @@ public class Skeleton : MonoBehaviour
 		}
 	}
 
-	public void calldead()
+	public void Calldead()
 	{
-		StartCoroutine(enemydead());
+		StartCoroutine(Enemydead());
 	}
 
-	public IEnumerator enemydead()
+	public IEnumerator Enemydead()
 	{
 		dirX = 0;
 		isDead = true;

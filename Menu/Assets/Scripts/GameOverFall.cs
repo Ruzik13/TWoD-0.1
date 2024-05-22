@@ -7,9 +7,15 @@ public class GameOverFall : MonoBehaviour
 {
 	[SerializeField] private HumanHealth healthComponent;
 	[SerializeField] private RatHealth ratHealthComponent;
+	[SerializeField] private Rat rat;
+	[SerializeField] private SkeletonHealth skeletonhealthComponent;
+	[SerializeField] private Skeleton skeleton;
+
 	float hp = 0;
 	float hp_rat = 0;
+	float hp_skeleton = 0;
 	bool new_trigger = false;
+
 	private void Awake()
 	{
 		if (!healthComponent)
@@ -36,10 +42,22 @@ public class GameOverFall : MonoBehaviour
 				
 			else
 			{
-				hp = healthComponent.currentHealth - 1;
-				hp_rat = ratHealthComponent.currentHealth;
-				PlayerPrefs.SetFloat("HP", hp);
-				PlayerPrefs.SetFloat("HPrat", hp_rat);
+				if (SceneManager.GetActiveScene().buildIndex == 2)
+				{
+					hp = healthComponent.currentHealth - 1;
+					hp_rat = ratHealthComponent.currentHealth;
+					PlayerPrefs.SetFloat("HP", hp);
+					PlayerPrefs.SetFloat("HPrat", hp_rat);
+				}
+				
+				else if (SceneManager.GetActiveScene().buildIndex == 3)
+				{
+					hp = healthComponent.currentHealth - 1;
+					hp_skeleton = skeletonhealthComponent.currentHealth;
+					PlayerPrefs.SetFloat("HP", hp);
+					PlayerPrefs.SetFloat("HPskeleton", hp_skeleton);
+				}
+
 				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 
@@ -55,16 +73,34 @@ public class GameOverFall : MonoBehaviour
 			hp_rat = PlayerPrefs.GetFloat("HPrat");
 			healthComponent.currentHealth = hp;
 			ratHealthComponent.currentHealth = hp_rat;
+			if (hp_rat == 0f)
+				rat.Calldead();
+				
+		}
+
+		else if (PlayerPrefs.HasKey("HP") && PlayerPrefs.HasKey("HPskeleton"))
+		{
+			hp = PlayerPrefs.GetFloat("HP");
+			hp_skeleton = PlayerPrefs.GetFloat("HPskeleton");
+			healthComponent.currentHealth = hp;
+			skeletonhealthComponent.currentHealth = hp_skeleton;
+			if (hp_skeleton == 0f)
+				skeleton.Calldead();
+
 		}
 		else
 		{
 			healthComponent.Awake();
-			ratHealthComponent.Awake();
+			if (SceneManager.GetActiveScene().buildIndex == 2)
+				ratHealthComponent.Awake();
+			else if (SceneManager.GetActiveScene().buildIndex == 3)
+				skeletonhealthComponent.Awake();
 		}
 
 		// Удаляем ключ "HP" после его использования
 		PlayerPrefs.DeleteKey("HP");
 		PlayerPrefs.DeleteKey("HPrat");
+		PlayerPrefs.DeleteKey("HPskeleton");
 
 
 	}

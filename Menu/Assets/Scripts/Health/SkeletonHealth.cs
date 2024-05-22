@@ -8,7 +8,7 @@ public class SkeletonHealth : MonoBehaviour
 	public float currentHealth;
 	Animator anim;
 
-	private void Awake()
+	public void Awake()
 	{
 		currentHealth = startingHealth;
 	}

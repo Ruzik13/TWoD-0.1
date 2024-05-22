@@ -42437,6 +42437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds: []
+  anim: {fileID: 313619465}
 --- !u!114 &313619470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42449,7 +42450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d785ee2fa5906e9459e9541ac26eb273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  startingHealth: 2
   currentHealth: 0
 --- !u!58 &313619471
 CircleCollider2D:
@@ -48079,7 +48080,7 @@ Transform:
   m_GameObject: {fileID: 777499355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 114.09, y: -2.92, z: 0}
+  m_LocalPosition: {x: 64.69, y: -0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49468,6 +49469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 777499362}
   ratHealthComponent: {fileID: 313619470}
+  rat: {fileID: 313619469}
+  skeletonhealthComponent: {fileID: 0}
+  skeleton: {fileID: 0}
 --- !u!1 &979746332
 GameObject:
   m_ObjectHideFlags: 0
@@ -53461,7 +53465,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 0.2
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -54651,7 +54655,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.3
+  m_FillAmount: 0.2
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -89136,7 +89140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.26553345, y: 0.27}
+  m_AnchoredPosition: {x: 0.11, y: 0.3}
   m_SizeDelta: {x: 233.3314, y: 95.4095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
