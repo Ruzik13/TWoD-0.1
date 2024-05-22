@@ -257,7 +257,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.3
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -20781,7 +20781,7 @@ GameObject:
   - component: {fileID: 320426619}
   - component: {fileID: 320426618}
   - component: {fileID: 320426617}
-  - component: {fileID: 320426616}
+  - component: {fileID: 320426622}
   - component: {fileID: 320426615}
   - component: {fileID: 320426614}
   - component: {fileID: 320426613}
@@ -20921,26 +20921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 5
   currentHealth: 0
---- !u!114 &320426616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320426612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ca908e377f3cc46963e5f67197e387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - {fileID: 8300000, guid: e912720e5be24f141a9ffb471580e049, type: 3}
-  - {fileID: 8300000, guid: 98ea15edc8b00c942952cc09d85d3cbd, type: 3}
-  - {fileID: 8300000, guid: 7b5f6b97351a87142827edea60d698cb, type: 3}
-  - {fileID: 8300000, guid: 212bee7567965b242a2823408199f32a, type: 3}
-  moveSpeedwalk: 3
-  moveSpeedrun: 7
-  delayTime: 0.1
 --- !u!95 &320426617
 Animator:
   serializedVersion: 5
@@ -21099,6 +21079,26 @@ Transform:
   - {fileID: 1942593414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320426622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320426612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ca908e377f3cc46963e5f67197e387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: e912720e5be24f141a9ffb471580e049, type: 3}
+  - {fileID: 8300000, guid: 98ea15edc8b00c942952cc09d85d3cbd, type: 3}
+  - {fileID: 8300000, guid: 7b5f6b97351a87142827edea60d698cb, type: 3}
+  - {fileID: 8300000, guid: 212bee7567965b242a2823408199f32a, type: 3}
+  moveSpeedwalk: 3
+  moveSpeedrun: 7
+  delayTime: 2.5
 --- !u!1 &322872365
 GameObject:
   m_ObjectHideFlags: 0
@@ -22181,7 +22181,7 @@ Transform:
   m_GameObject: {fileID: 560668963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.1, y: -11.75, z: 0}
+  m_LocalPosition: {x: -12.31, y: -12.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53511,7 +53511,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 0.3
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0

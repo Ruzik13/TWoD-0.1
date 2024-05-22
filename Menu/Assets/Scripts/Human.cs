@@ -161,6 +161,7 @@ public class Human : Sounds
 		if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
 		{
 			anim.SetBool("isJumping", true);
+			PlaySound(sounds[1]);
 			rb.velocity = new Vector2(rb.velocity.x, 14);
 
 		}
