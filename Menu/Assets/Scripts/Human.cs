@@ -190,25 +190,32 @@ public class Human : Sounds
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.gameObject.name.Equals("rat") && !isDead) {
-            if (healthComponent.currentHealth <= 0)
-            {
-                dirX = 0;
-                isDead = true;
-                anim.SetTrigger("isDead"); // Memainkan animasi kematian
+			if (healthComponent.currentHealth <= 0)
+			{
+				dirX = 0;
+				isDead = true;
+				anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-            else if (Input.GetKey(KeyCode.S) && col.GetComponent<RatHealth>().currentHealth > 0)
-            {
-                col.GetComponent<RatHealth>().DecreaseHealth(1);
-                anim.SetBool("isAttacking", true);
-            }
-            else if (col.gameObject.GetComponent<RatHealth>().currentHealth <= 0)
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<RatHealth>().currentHealth > 0)
+			{
+				anim.SetBool("isAttacking", true);
+				if (col.GetComponent<RatHealth>().currentHealth <= 1)
+				{
+					col.GetComponent<RatHealth>().DecreaseHealth(1);
+					col.GetComponent<Rat>().calldead();
+				}
+				else
+					col.GetComponent<RatHealth>().DecreaseHealth(1);
+
+			}
+			else if (col.gameObject.GetComponent<RatHealth>().currentHealth <= 0)
 			{
 			}
-            else 
-            {
-                StartCoroutine(Hurt(1, 0.1f));
-            }             
+			else
+			{
+				StartCoroutine(Hurt(1, 1f));
+			}             
         }
         if (col.gameObject.name.Equals("Bringer-of-Death") && !isDead)
         {
@@ -219,17 +226,24 @@ public class Human : Sounds
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-            else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0 && SceneManager.GetActiveScene().buildIndex != 2)
-            {
-                col.GetComponent<MonsterHealth>().DecreaseHealth(1);
-                anim.SetBool("isAttacking", true);
-            }
-            else if (col.gameObject.GetComponent<MonsterHealth>().currentHealth <= 0)
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0)
+			{
+				anim.SetBool("isAttacking", true);
+				if (col.GetComponent<MonsterHealth>().currentHealth <= 1)
+				{
+					col.GetComponent<MonsterHealth>().DecreaseHealth(1);
+					col.GetComponent<Monster>().calldead();
+				}
+				else
+					col.GetComponent<MonsterHealth>().DecreaseHealth(1);
+
+			}
+			else if (col.gameObject.GetComponent<MonsterHealth>().currentHealth <= 0)
             {
             }
             else
             {
-                StartCoroutine(Hurt(1, 0.5f));
+                StartCoroutine(Hurt(1, 1.5f));
             }
         }
         if (col.gameObject.name.Equals("Skeleton") && !isDead)
@@ -244,15 +258,22 @@ public class Human : Sounds
 
 			else if (Input.GetKey(KeyCode.S) && col.GetComponent<SkeletonHealth>().currentHealth > 0)
 			{
-				col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
 				anim.SetBool("isAttacking", true);
+				if (col.GetComponent<SkeletonHealth>().currentHealth <= 1)
+				{
+					col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
+					col.GetComponent<Skeleton>().calldead();
+				}
+				else
+					col.GetComponent<SkeletonHealth>().DecreaseHealth(1);
+
 			}
 			else if (col.gameObject.GetComponent<SkeletonHealth>().currentHealth <= 0)
 			{
 			}
 			else { 
 			
-				StartCoroutine(Hurt(1, 2f)); 
+				StartCoroutine(Hurt(1, 1.5f)); 
 			}
         }
 
@@ -277,7 +298,7 @@ public class Human : Sounds
 			else
 			{
 
-				StartCoroutine(Hurt(1, 0.5f));
+				StartCoroutine(Hurt(1, 0.7f));
 			}
 		}
 
