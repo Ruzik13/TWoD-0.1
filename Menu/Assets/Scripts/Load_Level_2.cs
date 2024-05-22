@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Load_Level_2 : MonoBehaviour
 {
+	public GameObject panel;
 	public GameObject Timeline;
 	public GameObject mainCamera;
 	float hp;
@@ -13,6 +14,7 @@ public class Load_Level_2 : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Player")
 		{
+			panel.SetActive(true);
 			collision.gameObject.GetComponent<Human>().enabled = false;
 			PlayerPrefs.SetString("NewLevel", "Loaded");
 			mainCamera.GetComponent<CameraController>().enabled = false;

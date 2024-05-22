@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class LoadStartCutSceneLevel3 : MonoBehaviour
+public class ExitTimeline : MonoBehaviour
 {
-    public GameObject startCutScene;
-	public GameObject panel;
-
-	// Update is called once per frame
-	void Update()
+    public GameObject panel;
+    
+    void Update()
     {
         if (GetComponent<PlayableDirector>().state == PlayState.Paused)
         {
             panel.SetActive(false);
-            startCutScene.SetActive(true);
         }
+
     }
 }

@@ -19258,6 +19258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e125eb5e8f413ee47878b5ff1a029fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 1957419820}
   Timeline: {fileID: 2467998}
   mainCamera: {fileID: 1682433830}
   healthComponent: {fileID: 320426615}
@@ -22294,7 +22295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &573950452
 Animator:
   serializedVersion: 5
@@ -45249,6 +45250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7027605d0d880b1418ee55e75407e37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 573950451}
   cameraControl: {fileID: 1682433830}
   finalCutScene: {fileID: 1376385424}
 --- !u!1 &1152891677
@@ -52694,6 +52696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCutScene: {fileID: 322872365}
+  panel: {fileID: 1957419820}
 --- !u!1 &1722665907
 GameObject:
   m_ObjectHideFlags: 0

@@ -10486,6 +10486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576102232}
   - component: {fileID: 576102231}
+  - component: {fileID: 576102233}
   m_Layer: 0
   m_Name: TimelineLoadScene
   m_TagString: Untagged
@@ -10683,6 +10684,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576102233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576102230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9088ee82e226fb4b824c4e68e267b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1212878761}
 --- !u!1 &576297826
 GameObject:
   m_ObjectHideFlags: 0
@@ -53730,8 +53744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0106, y: 0.0194}
-  m_SizeDelta: {x: 34.5955, y: 20.0453}
+  m_AnchoredPosition: {x: 0.1398, y: 0.0194}
+  m_SizeDelta: {x: 36.318, y: 20.7773}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920046400
 MonoBehaviour:
