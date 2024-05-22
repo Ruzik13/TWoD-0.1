@@ -53544,6 +53544,7 @@ MonoBehaviour:
   leftEdge: {fileID: 1858340557}
   rightEdge: {fileID: 1653498857}
   enemy: {fileID: 1829286129}
+  human: {fileID: 1437884272}
   speed: 3
   idleDuration: 1
   anim: {fileID: 1829286124}
@@ -57991,7 +57992,7 @@ Transform:
   m_GameObject: {fileID: 1328871452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7604446, y: -2.693636, z: -0.4484255}
+  m_LocalPosition: {x: 5.78, y: -2.63, z: -0.4484255}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58572,7 +58573,7 @@ Transform:
   m_GameObject: {fileID: 1437884265}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 86.3, y: -8.2, z: 0}
+  m_LocalPosition: {x: 193.39, y: 5.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59511,6 +59512,7 @@ MonoBehaviour:
   leftEdge: {fileID: 189989436}
   rightEdge: {fileID: 1750654715}
   enemy: {fileID: 1154560351}
+  human: {fileID: 1437884272}
   speed: 5
   idleDuration: 1
   anim: {fileID: 1154560354}
@@ -60420,6 +60422,7 @@ MonoBehaviour:
   leftEdge: {fileID: 257447064}
   rightEdge: {fileID: 675896232}
   enemy: {fileID: 1328871454}
+  human: {fileID: 1437884272}
   speed: 2.5
   idleDuration: 1
   anim: {fileID: 1328871455}

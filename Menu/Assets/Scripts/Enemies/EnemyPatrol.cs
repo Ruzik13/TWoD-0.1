@@ -6,6 +6,8 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
     [SerializeField] private Transform enemy;
+    [SerializeField] private Transform human;
+
 
     [Header("Movement parameters")]
     [SerializeField] public float speed;
@@ -52,21 +54,34 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (speed != 0)
         {
+
+
+
             if (movingLeft)
             {
-                if (enemy.position.x >= leftEdge.position.x)
+                if (human.position.x > enemy.position.x && Mathf.Abs(human.position.x - enemy.position.x) < 5f && Mathf.Abs(human.position.y - enemy.position.y) < 1f)
+                    DirectionChange();
+
+                else if (enemy.position.x >= leftEdge.position.x)
                     MoveInDirection(-1);
                 else
                     DirectionChange();
             }
             else
             {
-                if (enemy.position.x <= rightEdge.position.x)
+                if (human.position.x < enemy.position.x && Mathf.Abs(human.position.x - enemy.position.x) < 5f && Mathf.Abs(human.position.y - enemy.position.y) < 1f)
+                    DirectionChange();
+
+                else if (enemy.position.x <= rightEdge.position.x)
                     MoveInDirection(1);
                 else
                     DirectionChange();
             }
         }
+
+
+
+
     }
 
     private void DirectionChange()

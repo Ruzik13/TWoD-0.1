@@ -46346,6 +46346,7 @@ MonoBehaviour:
   leftEdge: {fileID: 210986076}
   rightEdge: {fileID: 1702503653}
   enemy: {fileID: 1885486421}
+  human: {fileID: 777499361}
   speed: 4
   idleDuration: 1
   anim: {fileID: 1885486414}
@@ -47084,6 +47085,7 @@ MonoBehaviour:
   leftEdge: {fileID: 1089797535}
   rightEdge: {fileID: 1770407166}
   enemy: {fileID: 313619468}
+  human: {fileID: 777499361}
   speed: 2.5
   idleDuration: 1
   anim: {fileID: 313619465}
@@ -48077,7 +48079,7 @@ Transform:
   m_GameObject: {fileID: 777499355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 183.8, y: -3.58, z: 0}
+  m_LocalPosition: {x: 114.09, y: -2.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53396,7 +53398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 777499355}
   Camera: {fileID: 1625280647}
-  healthComponent: {fileID: 0}
+  healthComponent: {fileID: 777499362}
 --- !u!1 &1474780388
 GameObject:
   m_ObjectHideFlags: 0
@@ -87088,9 +87090,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.008735657, y: 0}
   serializedVersion: 2
-  m_Radius: 1.8666667
+  m_Radius: 1.2290344
 --- !u!50 &1885486418
 Rigidbody2D:
   serializedVersion: 4
@@ -87150,7 +87152,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.008739471, y: -0.078612804}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -87161,7 +87163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8, y: 3.7333333}
+  m_Size: {x: 2.4331436, y: 3.576108}
   m_EdgeRadius: 0
 --- !u!212 &1885486420
 SpriteRenderer:

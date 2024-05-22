@@ -34,7 +34,7 @@ public class Human : Sounds
 		if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
 		{
 			if(PlayerPrefs.HasKey("Health") && PlayerPrefs.HasKey("NewLevel"))
-		{
+			{
 				hp = PlayerPrefs.GetFloat("Health");
 				healthComponent.currentHealth = hp;
 				PlayerPrefs.DeleteKey("NewLevel");
@@ -226,7 +226,7 @@ public class Human : Sounds
                 anim.SetTrigger("isDead"); // Memainkan animasi kematian
 				Load_GameOver();
 			}
-			else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0)
+			else if (Input.GetKey(KeyCode.S) && col.GetComponent<MonsterHealth>().currentHealth > 0 && SceneManager.GetActiveScene().buildIndex != 2)
 			{
 				anim.SetBool("isAttacking", true);
 				if (col.GetComponent<MonsterHealth>().currentHealth <= 1)
