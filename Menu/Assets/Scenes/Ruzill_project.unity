@@ -42484,9 +42484,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.04973221, y: -0.0149194}
   serializedVersion: 2
-  m_Radius: 0.76666665
+  m_Radius: 0.57271194
 --- !u!50 &313619472
 Rigidbody2D:
   serializedVersion: 4
@@ -46348,7 +46348,7 @@ MonoBehaviour:
   rightEdge: {fileID: 1702503653}
   enemy: {fileID: 1885486421}
   human: {fileID: 777499361}
-  speed: 4
+  speed: 6.5
   idleDuration: 1
   anim: {fileID: 1885486414}
 --- !u!4 &526206204
@@ -47935,7 +47935,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b5f6b97351a87142827edea60d698cb, type: 3}
   - {fileID: 8300000, guid: 212bee7567965b242a2823408199f32a, type: 3}
   moveSpeedwalk: 3
-  moveSpeedrun: 8
+  moveSpeedrun: 7
   delayTime: 2.5
 --- !u!95 &777499357
 Animator:
@@ -48081,7 +48081,7 @@ Transform:
   m_GameObject: {fileID: 777499355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.63, y: -2.33, z: 0}
+  m_LocalPosition: {x: 1.8, y: -2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50504,7 +50504,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.3
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -87081,9 +87081,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008735657, y: 0}
+  m_Offset: {x: 0.008735657, y: -0.6561432}
   serializedVersion: 2
-  m_Radius: 1.2290344
+  m_Radius: 1.1435499
 --- !u!50 &1885486418
 Rigidbody2D:
   serializedVersion: 4
